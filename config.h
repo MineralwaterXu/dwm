@@ -95,6 +95,8 @@ static const char *upvol[] = { "/home/mineralwater/scripts/vol-up.sh", NULL };
 static const char *downvol[] = { "/home/mineralwater/scripts/vol-down.sh", NULL };
 static const char *mutevol[] = { "/home/mineralwater/scripts/vol-toggle.sh", NULL };
 
+static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
+
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -104,6 +106,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F10,    spawn,          {.v = downvol } },
 	{ MODKEY,                       XK_F11,    spawn,          {.v = upvol } },
 	{ MODKEY,                       XK_F9,     spawn,          {.v = mutevol } },
+	{ 0,                            XK_Print,  spawn,          {.v = screenshotcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
