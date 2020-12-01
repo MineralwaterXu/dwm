@@ -91,12 +91,19 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[] = { "firefox", NULL };
 
+static const char *upvol[] = { "/home/mineralwater/scripts/vol-up.sh", NULL };
+static const char *downvol[] = { "/home/mineralwater/scripts/vol-down.sh", NULL };
+static const char *mutevol[] = { "/home/mineralwater/scripts/vol-toggle.sh", NULL };
+
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = browsercmd } },
+	{ MODKEY,                       XK_F10,    spawn,          {.v = downvol } },
+	{ MODKEY,                       XK_F11,    spawn,          {.v = upvol } },
+	{ MODKEY,                       XK_F9,     spawn,          {.v = mutevol } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
