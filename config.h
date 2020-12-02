@@ -8,7 +8,7 @@ static const unsigned int gappih    = 10;       /* horiz inner gap between windo
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
 static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
-static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
+static const int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const int viewontag          = 1;        /* Switch view on tag switch */
@@ -78,10 +78,10 @@ static const Layout layouts[] = {
 /* key definitions */
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ Mod1Mask,                       KEY,      view,           {.ui = 1 << TAG} }, \
+	{ Mod1Mask|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+	{ Mod1Mask|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+	{ Mod1Mask|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -102,7 +102,7 @@ static const char *screenshotcmd[] = { "flameshot", "gui", NULL };
 
 static Key keys[] = {
 	/* modifier                     key                      function        argument */
-	{ MODKEY,                       XK_p,                    spawn,          {.v = dmenucmd } },
+	{ Mod1Mask,                     XK_F2,                   spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return,               spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_c,                    spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_v,                    spawn,          {.v = telegramcmd } },
@@ -124,25 +124,25 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,                    incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,                    setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,                    setmfact,       {.f = +0.05} },
-	{ MODKEY|Mod4Mask,              XK_h,                    incrgaps,       {.i = +1 } },
-	{ MODKEY|Mod4Mask,              XK_l,                    incrgaps,       {.i = -1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_h,                    incrogaps,      {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_l,                    incrogaps,      {.i = -1 } },
-	{ MODKEY|Mod4Mask|ControlMask,  XK_h,                    incrigaps,      {.i = +1 } },
-	{ MODKEY|Mod4Mask|ControlMask,  XK_l,                    incrigaps,      {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_0,                    togglegaps,     {0} },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_0,                    defaultgaps,    {0} },
+	{ MODKEY|Mod1Mask,              XK_h,                    incrgaps,       {.i = +1 } },
+	{ MODKEY|Mod1Mask,              XK_l,                    incrgaps,       {.i = -1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_h,                    incrogaps,      {.i = +1 } },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_l,                    incrogaps,      {.i = -1 } },
+	{ MODKEY|Mod1Mask|ControlMask,  XK_h,                    incrigaps,      {.i = +1 } },
+	{ MODKEY|Mod1Mask|ControlMask,  XK_l,                    incrigaps,      {.i = -1 } },
+	{ MODKEY|Mod1Mask,              XK_0,                    togglegaps,     {0} },
+	{ MODKEY|Mod1Mask|ShiftMask,    XK_0,                    defaultgaps,    {0} },
 	{ MODKEY,                       XK_y,                    incrihgaps,     {.i = +1 } },
 	{ MODKEY,                       XK_o,                    incrihgaps,     {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_y,                    incrivgaps,     {.i = +1 } },
 	{ MODKEY|ControlMask,           XK_o,                    incrivgaps,     {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_y,                    incrohgaps,     {.i = +1 } },
-	{ MODKEY|Mod4Mask,              XK_o,                    incrohgaps,     {.i = -1 } },
+	{ MODKEY|Mod1Mask,              XK_y,                    incrohgaps,     {.i = +1 } },
+	{ MODKEY|Mod1Mask,              XK_o,                    incrohgaps,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_y,                    incrovgaps,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_o,                    incrovgaps,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_Return,               zoom,           {0} },
 	{ MODKEY,                       XK_Tab,                  view,           {0} },
-	{ MODKEY|ShiftMask,             XK_q,                    killclient,     {0} },
+	{ Mod1Mask,                     XK_F4,                   killclient,     {0} },
 	{ MODKEY,                       XK_t,                    setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,                    setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,                    setlayout,      {.v = &layouts[2]} },
