@@ -93,6 +93,7 @@ static const char *browsercmd[] = { "/home/mineralwater/scripts/firefox-toggle.s
 static const char *browserfuncmd[] = { "/home/mineralwater/scripts/firefox-fun-toggle.sh", NULL };
 static const char *telegramcmd[] = { "/home/mineralwater/scripts/telegram-toggle.sh", NULL };
 static const char *elementcmd[] = { "/home/mineralwater/scripts/element-toggle.sh", NULL};
+static const char *filemanagercmd[] = { "/home/mineralwater/scripts/filemanager-toggle.sh", NULL};
 
 static const char *upvol[] = { "/home/mineralwater/scripts/vol-up.sh", NULL };
 static const char *downvol[] = { "/home/mineralwater/scripts/vol-down.sh", NULL };
@@ -109,6 +110,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_c,                    spawn,          {.v = browserfuncmd } },
 	{ MODKEY,                       XK_v,                    spawn,          {.v = telegramcmd } },
 	{ MODKEY|ShiftMask,             XK_v,                    spawn,          {.v = elementcmd } },
+	{ MODKEY,                       XK_e,                    spawn,          {.v = filemanagercmd } },
 	{ 0,                            XF86XK_AudioLowerVolume, spawn,          {.v = downvol } },
 	{ 0,                            XF86XK_AudioMute,        spawn,          {.v = mutevol } },
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn,          {.v = upvol } },
