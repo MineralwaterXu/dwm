@@ -99,7 +99,7 @@ static const char *upvol[] = { "/home/mineralwater/scripts/vol-up.sh", NULL };
 static const char *downvol[] = { "/home/mineralwater/scripts/vol-down.sh", NULL };
 static const char *mutevol[] = { "/home/mineralwater/scripts/vol-toggle.sh", NULL };
 
-static const char *screenshotcmd[] = { "QT_ENABLE_HIGHDPI_SCALING=0", "flameshot", "gui", NULL };
+static const char *screenshotcmd[] = { "/home/mineralwater/scripts/screenshot.sh", NULL };
 
 
 static Key keys[] = {
